@@ -74,7 +74,7 @@ http {                                                                          
     server {                                                                       \n\
         # Running port                                                             \n\
         listen 80;                                                                 \n\
-        listen              443 ssl;                                              \n\
+        #listen              443 ssl;                                              \n\
         server_name         api.denarius.pro;                                      \n\
         ssl_certificate     /opt/uwsgi/conf/cert.pem;                                  \n\
         ssl_certificate_key /opt/uwsgi/conf/key.pem;                                  \n\
