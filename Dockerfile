@@ -76,8 +76,8 @@ http {                                                                          
         listen 80;                                                                 \n\
         listen              443 ssl;                                              \n\
         server_name         api.denarius.pro;                                      \n\
-        ssl_certificate     /opt/uwsgi/cert.pem;                                  \n\
-        ssl_certificate_key /opt/uwsgi/key.pem;                                  \n\
+        ssl_certificate     /opt/uwsgi/conf/cert.pem;                                  \n\
+        ssl_certificate_key /opt/uwsgi/conf/key.pem;                                  \n\
                                                                                    \n\
         # Proxying connections to application servers                              \n\
         location / {                                                               \n\
