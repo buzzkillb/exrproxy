@@ -74,10 +74,10 @@ http {                                                                          
     server {                                                                       \n\
         # Running port                                                             \n\
         listen 80;                                                                 \n\
-        #listen              443 ssl;                                              \n\
-        #server_name         www.example.com;                                      \n\
-        #ssl_certificate     www.example.com.crt;                                  \n\
-        #ssl_certificate_key www.example.com.key;                                  \n\
+        listen              443 ssl;                                              \n\
+        server_name         api.denarius.pro;                                      \n\
+        ssl_certificate     /opt/uwsgi/cert.pem;                                  \n\
+        ssl_certificate_key /opt/uwsgi/key.pem;                                  \n\
                                                                                    \n\
         # Proxying connections to application servers                              \n\
         location / {                                                               \n\
