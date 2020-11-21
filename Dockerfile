@@ -95,8 +95,35 @@ http {                                                                          
             proxy_set_header   X-Real-IP \$remote_addr;                            \n\
             proxy_set_header   X-Forwarded-For \$proxy_add_x_forwarded_for;        \n\
             proxy_set_header   X-Forwarded-Host \$server_name;                     \n\
+            add_header Onion-Location http://uy5o2bnd2fbcdq57qh5vclkvpj4xyn7iggbfyxtjqfgtzr7vmhosrlad.onion$request_uri; \n\
         }                                                                          \n\
     }                                                                              \n\
+
+    server {  \n\
+\n\
+        listen   80; \n\
+        server_name uy5o2bnd2fbcdq57qh5vclkvpj4xyn7iggbfyxtjqfgtzr7vmhosrlad.onion; \n\
+\n\
+        error_log   /var/log/nginx/hidden_service.error.log; \n\
+        access_log  off; \n\
+\n\
+        location / { \n\
+\n\
+        } \n\
+\n\
+        include /etc/nginx/conf.d/xcloud/*.conf; \n\
+\n\
+        location ~ ^/xrs?/.*$ { \n\
+            root               /opt/uwsgi; \n\
+            include            uwsgi_params; \n\
+            uwsgi_pass         uwsgicluster; \n\
+            proxy_redirect     off; \n\
+            proxy_set_header   Host $host; \n\
+            proxy_set_header   X-Real-IP $remote_addr; \n\
+            proxy_set_header   X-Forwarded-For $proxy_add_x_forwarded_for; \n\
+            proxy_set_header   X-Forwarded-Host $server_name; \n\
+        } \n\
+    } \n\
                                                                                    \n\
     include /etc/nginx/conf.d/*.conf;                                              \n\
 }                                                                                  \n\
